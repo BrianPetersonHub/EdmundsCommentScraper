@@ -7,30 +7,50 @@ For reference:
 
 The resultant json file is in the following format:
 <pre>
-[  
-  [  
-    [  
-      [ comment1 on page1 of forum1 on indexpage1, comment2 on page1 of forum1 on indexpage1, ... ],  
-      [ comment1 on page2 of forum1 on indexpage1, comment2 on page2 of forum1 on indexpage1, ... ],  
-      [ comment1 on page3 of forum1 on indexpage1, comment2 on page3 of forum1 on indexpage1, ... ]  
-    ]  
-    [  
-      [ comment1 on page1 of forum2 on indexpage1, comment2 on page1 of forum2 on indexpage1, ... ],  
-      [ comment1 on page2 of forum2 on indexpage1, comment2 on page2 of forum2 on indexpage1, ... ],  
-      [ comment1 on page3 of forum2 on indexpage1, comment2 on page3 of forum2 on indexpage1, ... ]  
-    ]  
-  ]  
-  [  
-    [  
-      [ comment1 on page1 of forum1 on indexpage2, comment2 on page1 of forum1 on indexpage2, ... ],  
-      [ comment1 on page2 of forum1 on indexpage2, comment2 on page2 of forum1 on indexpage2, ... ],  
-      [ comment1 on page3 of forum1 on indexpage2, comment2 on page3 of forum1 on indexpage2, ... ]  
-    ]  
-    [  
-      [ comment1 on page1 of forum2 on indexpage2, comment2 on page1 of forum2 on indexpage2, ... ],  
-      [ comment1 on page2 of forum2 on indexpage2, comment2 on page2 of forum2 on indexpage2, ... ],  
-      [ comment1 on page3 of forum2 on indexpage2, comment2 on page3 of forum2 on indexpage2, ... ]  
-    ]  
-  ]  
-]  
+{
+	"indexpage1": {
+		"forum1": {
+			"page1": {
+				"comment1": "first comment",
+				"comment2": "second comment"
+			},
+			"page2": {
+				"comment1": "first comment",
+				"comment2": "second comment"
+			}
+		},
+		"forum2": {
+			"page1": {
+				"comment1": "first comment",
+				"comment2": "second comment"
+			},
+			"page2": {
+				"comment1": "first comment",
+				"comment2": "second comment"
+			}
+		}
+	},
+	"indexpage2": {
+		"forum1": {
+			"page1": {
+				"comment1": "first comment",
+				"comment2": "second comment"
+			},
+			"page2": {
+				"comment1": "first comment",
+				"comment2": "second comment"
+			}
+		},
+		"forum2": {
+			"page1": {
+				"comment1": "first comment",
+				"comment2": "second comment"
+			},
+			"page2": {
+				"comment1": "first comment",
+				"comment2": "second comment"
+			}
+		}
+	}
+}
 </pre>
