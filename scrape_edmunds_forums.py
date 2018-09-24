@@ -27,7 +27,7 @@ else:
 
 print("There are " + str(index_last_page_number) + " pages of forums")
 
-data_by_page_by_forum_by_page = []
+data_by_page_by_forum_by_page = {}
 
 # from each page
 for i in range(1, index_last_page_number+1):
@@ -47,8 +47,9 @@ for i in range(1, index_last_page_number+1):
         + " urls from page number " + str(i)
         )
 
-    data_by_forum_by_page = []
+    data_by_forum_by_page = {}
 
+    numberofforums = 0
     # for each forum
     for j in range(len(forum_urls)):
         # get number of pages in forum
@@ -65,7 +66,7 @@ for i in range(1, index_last_page_number+1):
 
         print("        Forum " + str(j+1) + " has " + str(last_forum_page_num) + " pages")
 
-        data_by_page = []
+        data_by_page = {}
 
         # for each page in a forum
         for k in range(1, last_forum_page_num+1):
@@ -74,29 +75,30 @@ for i in range(1, index_last_page_number+1):
             # collect the comments on this page
             soup = BeautifulSoup(forum_page.content, 'html.parser')
             user_content_tags = soup.find_all(class_="Message userContent")
-            data_by_comment = []
+
+            data_by_comment = {}
             num_of_comments = 0
             for tag in user_content_tags:
                 comment = tag.getText()
-                data_by_comment.append(comment)
+                data_by_comment["comment" + str(num_of_comments+1)] = comment
                 num_of_comments += 1
 
-            data_by_page.append(data_by_comment)
+            data_by_page["page" + str(k)] = data_by_comment
 
             print(
                 "            Collected " + str(num_of_comments)
-                + " comments from Forum, " + str(j+1)
-                + " page " + str(k)
+                + " comments from Forum " + str(j+1)
+                + ", page " + str(k)
                 )
 
-        data_by_forum_by_page.append(data_by_page)
+        data_by_forum_by_page["forum"+str(j+1)] = data_by_page
 
         print(
             "        Collected all comments from forum "
             + str(j+1) + " on page " + str(i)
             )
 
-    data_by_page_by_forum_by_page.append(data_by_forum_by_page)
+    data_by_page_by_forum_by_page["indexpage"+str(i)] = data_by_forum_by_page
 
     print("    Collected all forum message data for page " + str(i) + "\n")
 
@@ -105,5 +107,4 @@ print("Exporting to JSON...")
 
 with open("edmunds_comment_data.json", 'w') as out:
     json.dump(data_by_page_by_forum_by_page, out)
-
 print("Export finished! :)")
