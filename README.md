@@ -1,9 +1,11 @@
 # EdmundsCommentScraper
 A script that scrapes comment data from a car forum website and outputs a json file.
 
+<pre>
 For reference:
   This is an index page - https://forums.edmunds.com/discussions/tagged/x/tires-wheels/p1
   This is a page in a forum - https://forums.edmunds.com/discussion/2219/chrysler/sebring/chrysler-sebring-accessories-and-modifications
+</pre>
 
 The resultant json file is in the following format:
 <pre>
