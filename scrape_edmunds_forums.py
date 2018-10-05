@@ -79,7 +79,20 @@ for i in range(1, index_last_page_number+1):
             data_by_comment = {}
             num_of_comments = 0
             for tag in user_content_tags:
-                comment = tag.getText()
+
+                # extracts text from block quotes
+                comment = ''
+                if tag.find('blockquote'):
+                    try:
+                        comment += tag.contents[2].strip()
+                    except:
+                        comment += ''
+                else:
+                    comment += tag.contents[0].strip()
+
+                # if no blockquote, extract the text normally
+                if comment == '':
+                    comment = tag.getText()
                 data_by_comment["comment" + str(num_of_comments+1)] = comment
                 num_of_comments += 1
 
